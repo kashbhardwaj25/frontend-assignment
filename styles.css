@@ -1,0 +1,305 @@
+:root {
+  --primary-color: #2081e2;
+  --secondary-color: #15b2d3;
+  --background-color: #f8f9fa;
+  --border-color: #dee2e6;
+  --text-color: #212529;
+  --hover-color: #f2f2f2;
+  --table-bg: #ffffff;
+
+  /* Currency colors */
+  --usd-color: #2ecc71; /* Green for USD */
+  --gbp-color: #3498db; /* Blue for GBP */
+  --eur-color: #e74c3c; /* Red for EUR */
+  --aud-color: #f1c40f; /* Yellow for AUD */
+  --cad-color: #9b59b6; /* Purple for CAD */
+  --chf-color: #e67e22; /* Orange for CHF */
+  --dkk-color: #1abc9c; /* Turquoise for DKK */
+}
+
+[data-theme="dark"] {
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --background-color: #1a1a1a;
+  --border-color: #404040;
+  --text-color: #ffffff;
+  --hover-color: #2d2d2d;
+  --table-bg: #2d2d2d;
+
+  /* Darker currency colors for dark theme */
+  --usd-color: #27ae60;
+  --gbp-color: #2980b9;
+  --eur-color: #c0392b;
+  --aud-color: #f39c12;
+  --cad-color: #8e44ad;
+  --chf-color: #d35400;
+  --dkk-color: #16a085;
+}
+
+/* Currency-specific styles */
+.currency-usd {
+  color: var(--usd-color);
+}
+.currency-gbp {
+  color: var(--gbp-color);
+}
+.currency-eur {
+  color: var(--eur-color);
+}
+.currency-aud {
+  color: var(--aud-color);
+}
+.currency-cad {
+  color: var(--cad-color);
+}
+.currency-chf {
+  color: var(--chf-color);
+}
+.currency-dkk {
+  color: var(--dkk-color);
+}
+
+/* Base reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Screen reader only class */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+  max-width: 900px; /* Reduced from 1200px */
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+h1 {
+  text-align: center;
+  color: var(--primary-color);
+  font-size: 2rem;
+  transition: color 0.3s ease;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.theme-toggle {
+  background: var(--table-bg);
+  border: 2px solid var(--border-color);
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle:hover {
+  background-color: var(--hover-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+.theme-toggle svg {
+  fill: var(--text-color);
+  transition: fill 0.3s ease, transform 0.3s ease;
+  width: 20px;
+  height: 20px;
+}
+
+.theme-toggle:hover svg {
+  transform: rotate(15deg);
+}
+
+.theme-toggle .moon-icon {
+  display: none;
+}
+
+[data-theme="dark"] .theme-toggle {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .sun-icon {
+  display: none;
+}
+
+[data-theme="dark"] .moon-icon {
+  display: block;
+}
+
+.table-container {
+  background: var(--table-bg);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 500px; /* Reduced from 600px */
+}
+
+th,
+td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+  transition: border-color 0.3s ease;
+}
+
+/* Column widths and alignment */
+th:first-child,
+td:first-child {
+  width: 80px; /* Slightly wider for S.No. */
+  text-align: left;
+  white-space: nowrap;
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+  width: 35%; /* Percentage funded column */
+  text-align: left;
+  white-space: nowrap;
+}
+
+th:last-child,
+td:last-child {
+  width: 35%; /* Amount pledged column */
+  text-align: left;
+  white-space: nowrap;
+}
+
+/* Ensure table header text stays in one line */
+th {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+th {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+tr {
+  transition: background-color 0.3s ease;
+}
+
+tr:hover {
+  background-color: var(--hover-color);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 0.5rem;
+}
+
+.pagination button {
+  min-width: 40px;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-color);
+  background-color: var(--table-bg);
+  color: var(--text-color);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.pagination button:hover {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.pagination button.active {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.pagination button:disabled {
+  background-color: var(--border-color);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Focus styles for better accessibility */
+button:focus,
+a:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Ensure sufficient color contrast in dark mode */
+[data-theme="dark"] .pagination button:not(.active):not(:disabled) {
+  color: #ffffff;
+  background-color: var(--table-bg);
+}
+
+[data-theme="dark"] .table-container {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin: 1rem auto;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  th,
+  td {
+    padding: 0.75rem;
+  }
+
+  .pagination button {
+    padding: 0.4rem 0.8rem;
+  }
+}
