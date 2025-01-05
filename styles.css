@@ -89,7 +89,7 @@ body {
 }
 
 .container {
-  max-width: 900px; /* Reduced from 1200px */
+  max-width: 900px;
   margin: 2rem auto;
   padding: 0 1rem;
 }
@@ -175,7 +175,7 @@ h1 {
 table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 500px; /* Reduced from 600px */
+  min-width: 500px;
 }
 
 th,
@@ -189,26 +189,25 @@ td {
 /* Column widths and alignment */
 th:first-child,
 td:first-child {
-  width: 80px; /* Slightly wider for S.No. */
+  width: 80px;
   text-align: left;
   white-space: nowrap;
 }
 
 th:nth-child(2),
 td:nth-child(2) {
-  width: 35%; /* Percentage funded column */
+  width: 35%;
   text-align: left;
   white-space: nowrap;
 }
 
 th:last-child,
 td:last-child {
-  width: 35%; /* Amount pledged column */
+  width: 35%;
   text-align: left;
   white-space: nowrap;
 }
 
-/* Ensure table header text stays in one line */
 th {
   white-space: nowrap;
   overflow: hidden;
