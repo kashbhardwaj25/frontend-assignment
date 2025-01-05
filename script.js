@@ -10,7 +10,6 @@ let projectsData = [];
 
 async function fetchProjects() {
   try {
-    // Use local JSON file instead of remote URL
     const response = await fetch('frontend-assignment.json');
 
     if (!response.ok) {
